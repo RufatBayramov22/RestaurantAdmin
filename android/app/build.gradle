@@ -84,6 +84,18 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        // Optimize for single architecture in debug builds
+        ndk {
+            abiFilters "arm64-v8a"
+        }
+    }
+    
+    // Reduce build time
+    splits {
+        abi {
+            reset()
+            enable false
+        }
     }
     signingConfigs {
         debug {
@@ -96,6 +108,13 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            // Speed up debug builds
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            // Enable debugging
+            debuggable true
+            jniDebuggable false
+            renderscriptDebuggable false
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -104,6 +123,12 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
+    }
+    
+    // Optimize compilation
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 }
 

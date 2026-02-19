@@ -4,16 +4,33 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "android:dev": "react-native run-android --mode=Debug",
+    "android:release": "react-native run-android --mode=Release",
+    "ios": "react-native run-ios --simulator=\"iPhone 15\"",
+    "ios:dev": "react-native run-ios --simulator=\"iPhone 15\" --mode Debug",
+    "ios:release": "react-native run-ios --simulator=\"iPhone 15\" --mode Release",
+    "ios:device": "react-native run-ios --device",
+    "ios:fast": "react-native run-ios --simulator=\"iPhone 15\" --no-packager",
     "lint": "eslint .",
     "start": "react-native start",
+    "start:reset": "react-native start --reset-cache",
+    "clean": "cd android && ./gradlew clean && cd ../ios && xcodebuild clean && cd .. && npm run start:reset",
+    "clean:android": "cd android && ./gradlew clean",
+    "clean:ios": "cd ios && xcodebuild clean",
     "test": "jest"
   },
   "dependencies": {
+    "@react-native/new-app-screen": "0.81.4",
+    "@react-navigation/bottom-tabs": "^7.4.7",
+    "@react-navigation/native": "^7.1.17",
+    "@react-navigation/stack": "^7.4.8",
+    "axios": "^1.12.2",
     "react": "19.1.0",
     "react-native": "0.81.4",
-    "@react-native/new-app-screen": "0.81.4",
-    "react-native-safe-area-context": "^5.5.2"
+    "react-native-document-picker": "^9.3.1",
+    "react-native-gesture-handler": "^2.28.0",
+    "react-native-safe-area-context": "^5.5.2",
+    "react-native-screens": "^4.16.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -37,5 +54,6 @@
   },
   "engines": {
     "node": ">=20"
-  }
+  },
+  "packageManager": "yarn@4.4.1+sha512.f825273d0689cc9ead3259c14998037662f1dcd06912637b21a450e8da7cfeb4b1965bbee73d16927baa1201054126bc385c6f43ff4aa705c8631d26e12460f1"
 }
