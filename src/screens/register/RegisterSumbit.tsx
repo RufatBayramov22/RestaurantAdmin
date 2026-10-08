@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import _styles from './styles';
+import { RootStackParamList } from '../../navigation/stack';
 
 const RegisterSumbit = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const styles = _styles;
 
 
@@ -21,7 +23,7 @@ const RegisterSumbit = () => {
       <View style={styles.bottomContainer}>
         <TouchableOpacity
           style={styles.button}
-          onPress={()=> navigation.navigate('GoSubscription' as never)}>
+          onPress={() => navigation.navigate('Login')}>
           <Text style={styles.buttonText}>Back to Login</Text>
         </TouchableOpacity>
       </View>

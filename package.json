@@ -6,11 +6,11 @@
     "android": "react-native run-android",
     "android:dev": "react-native run-android --mode=Debug",
     "android:release": "react-native run-android --mode=Release",
-    "ios": "react-native run-ios --simulator=\"iPhone 15\"",
-    "ios:dev": "react-native run-ios --simulator=\"iPhone 15\" --mode Debug",
-    "ios:release": "react-native run-ios --simulator=\"iPhone 15\" --mode Release",
+    "ios": "react-native run-ios --simulator=\"iPhone 16\"",
+    "ios:dev": "react-native run-ios --simulator=\"iPhone 16\" --mode Debug",
+    "ios:release": "react-native run-ios --simulator=\"iPhone 16\" --mode Release",
     "ios:device": "react-native run-ios --device",
-    "ios:fast": "react-native run-ios --simulator=\"iPhone 15\" --no-packager",
+    "ios:fast": "react-native run-ios --simulator=\"iPhone 16\" --no-packager",
     "lint": "eslint .",
     "start": "react-native start",
     "start:reset": "react-native start --reset-cache",
@@ -20,6 +20,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^3.0.2",
     "@react-native/new-app-screen": "0.81.4",
     "@react-navigation/bottom-tabs": "^7.4.7",
     "@react-navigation/native": "^7.1.17",
@@ -27,10 +28,13 @@
     "axios": "^1.12.2",
     "react": "19.1.0",
     "react-native": "0.81.4",
+    "react-native-audio-recorder-player": "^3.6.14",
+    "react-native-camera-kit": "^17.0.1",
     "react-native-document-picker": "^9.3.1",
     "react-native-gesture-handler": "^2.28.0",
     "react-native-safe-area-context": "^5.5.2",
-    "react-native-screens": "^4.16.0"
+    "react-native-screens": "^4.16.0",
+    "react-native-sound-player": "^0.13.4"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

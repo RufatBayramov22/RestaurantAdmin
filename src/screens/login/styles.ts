@@ -114,6 +114,18 @@ export const _styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '600',
   },
+
+  errorText: {
+    color: '#FF6B6B',
+    fontSize: 13,
+    lineHeight: 18,
+    marginTop: -8,
+    marginBottom: 12,
+  },
+
+  buttonDisabled: {
+    opacity: 0.7,
+  },
 });
 
 export default _styles;

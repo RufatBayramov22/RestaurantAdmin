@@ -1,0 +1,226 @@
+import { StyleSheet } from 'react-native';
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#090A0D',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 12,
+    paddingTop: 6,
+    paddingBottom: 14,
+  },
+  backButton: {
+    width: 34,
+    height: 34,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  backIcon: {
+    width: 22,
+    height: 22,
+    tintColor: '#E8E8E8',
+  },
+  headerTitle: {
+    color: '#EDEDED',
+    fontSize: 20,
+    fontWeight: '600',
+  },
+  headerSpacer: {
+    width: 34,
+  },
+  content: {
+    paddingHorizontal: 16,
+    paddingBottom: 30,
+  },
+  sectionTitle: {
+    color: '#EDEDED',
+    fontSize: 22 / 1.2,
+    fontWeight: '700',
+    marginBottom: 14,
+  },
+  sectionTopSpace: {
+    marginTop: 16,
+  },
+  label: {
+    color: '#E2E2E2',
+    fontSize: 14,
+    fontWeight: '500',
+    marginBottom: 8,
+  },
+  input: {
+    backgroundColor: '#1B1D22',
+    borderWidth: 1,
+    borderColor: '#272A31',
+    borderRadius: 14,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+    color: '#F2F2F2',
+    fontSize: 16,
+    marginBottom: 16,
+  },
+  selectWrap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#1B1D22',
+    borderWidth: 1,
+    borderColor: '#272A31',
+    borderRadius: 14,
+    paddingHorizontal: 16,
+    marginBottom: 16,
+  },
+  selectInput: {
+    flex: 1,
+    color: '#F2F2F2',
+    fontSize: 16,
+    paddingVertical: 14,
+  },
+  selectPlaceholderText: {
+    flex: 1,
+    color: '#6E7075',
+    fontSize: 16,
+    paddingVertical: 14,
+  },
+  selectValueText: {
+    flex: 1,
+    color: '#F2F2F2',
+    fontSize: 16,
+    paddingVertical: 14,
+  },
+  selectArrow: {
+    width: 18,
+    height: 18,
+    tintColor: '#A1A4AA',
+  },
+  cuisineDropdownCard: {
+    backgroundColor: '#1B1D22',
+    borderWidth: 1,
+    borderColor: '#2A2D34',
+    borderRadius: 14,
+    marginTop: 4,
+    marginBottom: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  cuisineDropdownList: {
+    maxHeight: 180,
+  },
+  cuisineDropdownItem: {
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#2A2D34',
+  },
+  cuisineDropdownItemText: {
+    color: '#F0F1F3',
+    fontSize: 18 / 1.2,
+    fontWeight: '400',
+  },
+  cuisineDropdownEmptyText: {
+    color: '#9EA1A8',
+    textAlign: 'center',
+    marginVertical: 12,
+  },
+  mapCard: {
+    height: 170,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: '#2A2D34',
+    backgroundColor: '#2A2D34',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 16,
+    overflow: 'hidden',
+    position: 'relative',
+  },
+  mapImage: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  mapOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.35)',
+  },
+  mapText: {
+    color: '#E7E8EA',
+    fontSize: 18,
+    fontWeight: '500',
+    zIndex: 2,
+  },
+  textarea: {
+    minHeight: 120,
+    textAlignVertical: 'top',
+  },
+  saveButton: {
+    marginTop: 8,
+    backgroundColor: '#2F78F2',
+    borderRadius: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 16,
+  },
+  saveButtonText: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: '600',
+  },
+
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.55)',
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+  },
+  modalCard: {
+    backgroundColor: '#1B1D22',
+    borderWidth: 1,
+    borderColor: '#2A2D34',
+    borderRadius: 14,
+    padding: 14,
+    maxHeight: '60%',
+  },
+  modalTitle: {
+    color: '#EDEDED',
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 10,
+  },
+  modalList: {
+    maxHeight: 280,
+  },
+  modalItem: {
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#2A2D34',
+  },
+  modalItemText: {
+    color: '#F0F1F3',
+    fontSize: 15,
+  },
+  modalEmptyText: {
+    color: '#9EA1A8',
+    textAlign: 'center',
+    marginVertical: 18,
+  },
+
+  mapPickerCard: {
+    marginHorizontal: 16,
+    marginTop: 20,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: '#2A2D34',
+    backgroundColor: '#1B1D22',
+    padding: 16,
+    gap: 10,
+  },
+  mapPickerHint: {
+    color: '#C5C7CC',
+    fontSize: 15,
+    marginBottom: 4,
+  },
+  mapPickerCoordinate: {
+    color: '#E7E8EA',
+    fontSize: 14,
+  },
+});

@@ -1,14 +1,37 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import _styles from './styles';
-const RegisterDetails = () => {
-  const navigation = useNavigation();
-  const styles = _styles;
+import { RootStackParamList } from '../../navigation/stack';
+import { useMainContext } from '../../context/MainContext';
 
-  const [restaurantName, setRestaurantName] = useState('');
-  const [cuisineType, setCuisineType] = useState('');
-  const [location, setLocation] = useState('');
+const RegisterDetails = () => {
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+  const styles = _styles;
+  const { registerForm, updateRegisterForm, clearSubmitError } = useMainContext();
+  const [validationMessage, setValidationMessage] = useState('');
+
+  const handleContinue = () => {
+    if (
+      !registerForm.email.trim() ||
+      !registerForm.phone.trim() ||
+      !registerForm.password ||
+      !registerForm.confirmPassword
+    ) {
+      setValidationMessage('Please complete your account details.');
+      return;
+    }
+
+    if (registerForm.password !== registerForm.confirmPassword) {
+      setValidationMessage('Password and confirm password must match.');
+      return;
+    }
+
+    clearSubmitError();
+    setValidationMessage('');
+    navigation.navigate('RegisterDoc');
+  };
 
   return (
     <View style={styles.container}>
@@ -54,46 +77,52 @@ const RegisterDetails = () => {
           style={styles.input}
           placeholder="e.g., name@example.com"
           placeholderTextColor="#7A7A7A"
-          value={restaurantName}
-          onChangeText={setRestaurantName}
+          keyboardType="email-address"
+          autoCapitalize="none"
+          value={registerForm.email}
+          onChangeText={text => updateRegisterForm({ email: text })}
         />
 
         <Text style={styles.label}>Phone Number</Text>
-        <View
-          style={styles.selectInput}>
-          <Text style={styles.phonePlaceholderText}>
-            +994
-          </Text>
-          <Text style={styles.placeholderText}>
-            Phone Number
-          </Text>
-        </View>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter phone number"
+          placeholderTextColor="#7A7A7A"
+          keyboardType="phone-pad"
+          value={registerForm.phone}
+          onChangeText={text => updateRegisterForm({ phone: text })}
+        />
 
         <Text style={styles.label}>Password</Text>
-        <View
-          style={styles.selectPhoneInput}>
-          <Text style={styles.placeholderText}>
-            Enter Password
-          </Text>
-          <Image style={styles.mapIcon} source={require('../../assets/images/icon/Hide.png')}/>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter password"
+          placeholderTextColor="#7A7A7A"
+          secureTextEntry
+          value={registerForm.password}
+          onChangeText={text => updateRegisterForm({ password: text })}
+        />
 
-        </View>
-           <Text style={styles.label}>Confirm Password</Text>
-        <View
-          style={styles.selectPhoneInput}>
-          <Text style={styles.placeholderText}>
-            Enter Password
-          </Text>
-          <Image style={styles.mapIcon} source={require('../../assets/images/icon/Hide.png')}/>
+        <Text style={styles.label}>Confirm Password</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Confirm password"
+          placeholderTextColor="#7A7A7A"
+          secureTextEntry
+          value={registerForm.confirmPassword}
+          onChangeText={text => updateRegisterForm({ confirmPassword: text })}
+        />
 
-        </View>
+        {validationMessage ? (
+          <Text style={styles.errorText}>{validationMessage}</Text>
+        ) : null}
       </View>
 
       {/* Bottom Button */}
       <View style={styles.bottomContainer}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('RegisterDoc' as never)}>
+          onPress={handleContinue}>
           <Text style={styles.buttonText}>Continue</Text>
         </TouchableOpacity>
       </View>

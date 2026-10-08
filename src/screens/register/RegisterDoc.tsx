@@ -1,26 +1,62 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 import DocumentPicker, { DocumentPickerResponse } from 'react-native-document-picker';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import _styles from './styles';
+import { RootStackParamList } from '../../navigation/stack';
+import { useMainContext } from '../../context/MainContext';
+
+const DEFAULT_DOCUMENT_NAME = 'No document selected';
 
 const RegisterDoc = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const styles = _styles;
-  const [selectedFile, setSelectedFile] = useState<DocumentPickerResponse | null>(null);
+  const {
+    registerForm,
+    setRegistrationDocument,
+    submitRegisterForm,
+    isSubmitting,
+    submitError,
+    clearSubmitError,
+  } = useMainContext();
+  const [validationMessage, setValidationMessage] = useState('');
 
   const handleFilePick = async () => {
     try {
       const res = await DocumentPicker.pick({
         type: [DocumentPicker.types.allFiles],
       });
-      setSelectedFile(res[0]);
+      const selectedFile: DocumentPickerResponse = res[0];
+
+      setRegistrationDocument({
+        uri: selectedFile.uri,
+        name: selectedFile.name ?? 'registration-document',
+        type: selectedFile.type ?? 'application/octet-stream',
+      });
+      setValidationMessage('');
+      clearSubmitError();
     } catch (err) {
       if (DocumentPicker.isCancel(err)) {
         console.log('User cancelled file picker');
       } else {
         console.error('Unknown error:', err);
       }
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (!registerForm.registrationDocument?.uri?.trim()) {
+      setValidationMessage('Please upload your registration document before submitting.');
+      clearSubmitError();
+      return;
+    }
+
+    setValidationMessage('');
+    const isSuccess = await submitRegisterForm();
+
+    if (isSuccess) {
+      navigation.navigate('RegisterSumbit');
     }
   };
 
@@ -78,19 +114,30 @@ const RegisterDoc = () => {
         </View>
 
         {/* Selected File Info */}
-        {selectedFile && (
-          <View style={styles.selectedFileBox}>
-            <Text style={styles.selectedFileName}>{selectedFile.name}</Text>
-          </View>
-        )}
+        <View style={styles.selectedFileBox}>
+          <Text style={styles.selectedFileName}>
+            {registerForm.registrationDocument?.name || DEFAULT_DOCUMENT_NAME}
+          </Text>
+        </View>
+
+        {validationMessage ? (
+          <Text style={styles.errorText}>{validationMessage}</Text>
+        ) : null}
+
+        {submitError ? <Text style={styles.errorText}>{submitError}</Text> : null}
       </View>
 
       {/* Bottom Button */}
       <View style={styles.bottomContainer}>
         <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('RegisterSumbit' as never)}>
-          <Text style={styles.buttonText}>Submit</Text>
+          style={[styles.button, isSubmitting && styles.buttonDisabled]}
+          disabled={isSubmitting}
+          onPress={handleSubmit}>
+          {isSubmitting ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <Text style={styles.buttonText}>Submit</Text>
+          )}
         </TouchableOpacity>
       </View>
     </View>

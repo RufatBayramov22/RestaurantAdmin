@@ -116,6 +116,10 @@ const _styles = StyleSheet.create({
     flex: 1,
   },
 
+  formContent: {
+    paddingBottom: 24,
+  },
+
   submitForm:{
     flex: 1,
     justifyContent: 'center',
@@ -155,6 +159,10 @@ const _styles = StyleSheet.create({
     marginBottom: 20,
   },
 
+  multilineInput: {
+    minHeight: 110,
+  },
+
   selectInput: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -182,6 +190,18 @@ const _styles = StyleSheet.create({
     fontSize: 15,
   },
 
+  selectValueText: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    flex: 1,
+  },
+
+  selectArrow: {
+    color: '#B3B3B3',
+    fontSize: 18,
+    marginLeft: 12,
+  },
+
   phonePlaceholderText: {
     color: '#1E6BE8',
     fontSize: 15,
@@ -190,6 +210,54 @@ const _styles = StyleSheet.create({
     color: '#FF3B30',
     fontSize: 18,
     marginRight: 6,
+  },
+
+  locationIcon: {
+    width: 18,
+    height: 18,
+    tintColor: '#2176FF',
+  },
+
+  dropdownContainer: {
+    backgroundColor: '#111111',
+    borderRadius: 14,
+    padding: 8,
+    marginTop: -10,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: '#2B2B2B',
+  },
+
+  dropdownScroll: {
+    maxHeight: 220,
+  },
+
+  dropdownOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 12,
+    paddingVertical: 14,
+    borderRadius: 10,
+  },
+
+  dropdownOptionSelected: {
+    backgroundColor: '#162B4D',
+  },
+
+  dropdownOptionText: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontWeight: '500',
+  },
+
+  dropdownOptionTextSelected: {
+    color: '#8DB9FF',
+  },
+
+  dropdownOptionId: {
+    color: '#B3B3B3',
+    fontSize: 13,
   },
 
   bottomContainer: {
@@ -256,6 +324,187 @@ const _styles = StyleSheet.create({
     color: '#bbb',
     fontSize: 14,
     marginTop: 4,
+  },
+
+  coordinateRow: {
+    flexDirection: 'row',
+    gap: 12,
+    marginBottom: 20,
+  },
+
+  coordinateCard: {
+    flex: 1,
+    backgroundColor: '#1E1E1E',
+    borderRadius: 10,
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+  },
+
+  coordinateLabel: {
+    color: '#B3B3B3',
+    fontSize: 12,
+    marginBottom: 8,
+  },
+
+  coordinateValue: {
+    color: '#FFFFFF',
+    fontSize: 15,
+  },
+
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    justifyContent: 'center',
+    paddingHorizontal: 24,
+  },
+
+  modalCard: {
+    backgroundColor: '#121212',
+    borderRadius: 18,
+    padding: 20,
+    maxHeight: '70%',
+  },
+
+  modalTitle: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: 16,
+  },
+
+  modalOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 14,
+    paddingHorizontal: 14,
+    borderRadius: 12,
+    backgroundColor: '#1E1E1E',
+    marginBottom: 10,
+  },
+
+  modalOptionSelected: {
+    borderWidth: 1,
+    borderColor: '#2176FF',
+    backgroundColor: '#162B4D',
+  },
+
+  modalOptionText: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontWeight: '500',
+  },
+
+  modalOptionTextSelected: {
+    color: '#8DB9FF',
+  },
+
+  modalOptionId: {
+    color: '#B3B3B3',
+    fontSize: 13,
+  },
+
+  modalDismissButton: {
+    marginTop: 8,
+    alignItems: 'center',
+    paddingVertical: 12,
+  },
+
+  modalDismissText: {
+    color: '#2176FF',
+    fontSize: 15,
+    fontWeight: '600',
+  },
+
+  switchRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#1E1E1E',
+    borderRadius: 10,
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+    marginBottom: 20,
+    gap: 16,
+  },
+
+  switchTextContainer: {
+    flex: 1,
+  },
+
+  helperText: {
+    color: '#B3B3B3',
+    fontSize: 12,
+    lineHeight: 16,
+  },
+
+  errorText: {
+    color: '#FF6B6B',
+    fontSize: 13,
+    lineHeight: 18,
+    marginTop: -8,
+    marginBottom: 12,
+  },
+
+  buttonDisabled: {
+    opacity: 0.7,
+  },
+
+  mapScreenContainer: {
+    flex: 1,
+    backgroundColor: '#000000',
+  },
+
+  mapHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 24,
+    paddingTop: 16,
+    paddingBottom: 12,
+  },
+
+  mapTitle: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: '700',
+  },
+
+  mapHeaderSpacer: {
+    width: 24,
+  },
+
+  mapCard: {
+    flex: 1,
+    marginHorizontal: 16,
+    marginBottom: 16,
+    backgroundColor: '#111111',
+    borderRadius: 20,
+    overflow: 'hidden',
+  },
+
+  mapHint: {
+    color: '#B3B3B3',
+    fontSize: 13,
+    lineHeight: 18,
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 12,
+  },
+
+  mapView: {
+    flex: 1,
+    minHeight: 420,
+  },
+
+  mapFooter: {
+    padding: 16,
+    gap: 8,
+  },
+
+  mapCoordinateText: {
+    color: '#FFFFFF',
+    fontSize: 14,
   },
 });
 
